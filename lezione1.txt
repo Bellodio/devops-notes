@@ -1,0 +1,78 @@
+echo"ha sempre bisogno di due cose: cosa cercare e dove cercarlo.
+
+Senza pipe: Devi specificare il file alla fine.
+
+Bash
+grep -i error /var/log/syslog
+Con la pipe: Il file lo legge il primo comando e lo passa a grep.
+
+Bash
+cat /var/log/syslog | grep -i error
+Sblocca il terminale con CTRL + C e prova a rilanciare lo Scenario 1 corretto:
+
+Bash
+grep -i error /var/log/syslog | tail -n 5"
+echo"fida 1: Trova e conta
+Scrivi un unico comando (usando le Pipe |) per contare quanti processi attivi sul tuo sistema contengono la parola systemd.
+
+Suggerimento: Combina ps aux, grep e wc -l
+Per contare quanti processi contengono la parola systemd, bastava mettere insieme tre pezzi come mattoncini Lego:
+
+Vedi tutti i processi: ps aux
+
+Filtra solo quelli con systemd: | grep systemd
+
+Conta le righe del risultato: | wc -l
+
+Mettendo tutto insieme:
+
+Bash
+ps aux | grep systemd | wc -l"
+echo "Navigazione & Permessi: pwd, ls -la, chmod +x e la differenza tra utente normale e root.
+
+Editor: Uso di nano per modificare i file in modo umano.
+
+Processi: top, ps aux per monitorare la memoria e la CPU.
+
+Filtri & Pipe: |, grep, wc -l per concatenare i comandi e cercare informazioni al volo.
+
+Log: /var/log, head e tail per analizzare il comportamento del sistema."
+echo"Il vero trucco da DevOps: combinare tail e grep
+Immagina che su un server c'è un problema e devi capire se riguarda Ollama o la rete. Non leggi tutto il syslog: filtri solo le ultime righe che ti interessano davvero.
+
+Prova a combinare tail e grep con una pipe:
+
+Bash
+tail -n 100 /var/log/syslog | grep -i ollama
+(Il flag -i serve a ignorare le maiuscole e minuscole, così trova sia "Ollama" che "ollama").
+
+Se Ollama ha scritto qualcosa di recente nel log di sistema ti mostrerà solo quelle righe, altrimenti il terminale tornerà pulito senza stampare spazzatura."
+echo "Prossimo step: Gestire i log di sistema (/var/log)
+Ora che sai come cercare i processi, passiamo all'altra metà del lavoro di un sistemista/DevOps: leggere i file di errore e di log.
+
+Quando un'applicazione o un server smette di funzionare, non apri un file da 10.000 righe con nano o cat (sarebbe un incubo). Si usano tre comandi specifici:
+
+head: Legge solo le prime 10 righe di un file.
+
+tail: Legge solo le ultime 10 righe di un file (quelle più recenti).
+
+tail -f: Il comando definitivo per fare debug. Rimane "in ascolto" e ti mostra i nuovi log in tempo reale man mano che vengono scritti.
+
+Facciamo una prova pratica sulla cartella dei log di sistema:
+
+Bash
+tail -n 15 /var/log/syslog"
+echo "Il simbolo | si chiama Pipe ed è uno degli strumenti più potenti di Linux: prende il risultato del primo comando e lo passa come input al secondo,Hai appena usato uno dei concetti chiave di tutto il mondo Linux e DevOps: il Pipe (|).
+
+Invece di dover scorrere manualmente una schermata con centinaia di righe confuse, hai concatenato due comandi distinti:
+
+ps aux ha generato la lista completa di tutto ciò che sta girando sulla macchina.
+
+| ha preso tutto quell'output e l'ha spedito dritto a grep.
+
+grep ollama ha fatto da setaccio, isolando solo la riga che conteneva la parola "ollama".
+
+Questo principio si chiama filosofia Unix: crea piccoli strumenti focalizzati su una sola cosa e poi collegalo insieme per fare cose complesse."
+echo "sto su nano?"
+#!/bin/bash
+echo "Ciao! Sto imparando Linux per diventare DevOps!"

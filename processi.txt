@@ -1,0 +1,27 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root           1  0.0  0.0  24220 15428 ?        Ss   12:35   0:01 /sbin/init
+root           2  0.0  0.0   3180  2204 hvc0     Sl+  12:35   0:00 /init
+root           6  0.0  0.0   3180  2044 hvc0     Sl+  12:35   0:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+root          76  0.0  0.1  50404 17196 ?        S<s  12:35   0:01 /usr/lib/systemd/systemd-journald
+systemd+     124  0.0  0.0  22416 14464 ?        Ss   12:35   0:00 /usr/lib/systemd/systemd-resolved
+root         134  0.0  0.0  35460 12356 ?        Ss   12:35   0:00 /usr/lib/systemd/systemd-udevd
+root         222  0.0  0.0   2888  2012 ?        Ss   12:35   0:00 /bin/sh /usr/lib/systemd/scripts/chronyd-starter.sh -n -F 1
+root         223  0.0  0.0   4472  3140 ?        Ss   12:35   0:00 /usr/sbin/cron -f -P
+message+     224  0.0  0.0   8820  5360 ?        Ss   12:35   0:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+bellodio     227  0.2 10.7 5139324 1755996 ?     Ssl  12:35   0:13 /home/bellodio/jarvis/.venv/bin/python3 /home/bellodio/jarvis/jarvis_agent.py
+root         230  0.0  0.1  44100 29828 ?        Ss   12:35   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+ollama       231  0.0  0.2 2331416 40708 ?       Ssl  12:35   0:01 /usr/local/bin/ollama serve
+root         238  0.0  0.0  18568  9492 ?        Ss   12:35   0:00 /usr/lib/systemd/systemd-logind
+root         297  0.0  0.0   5492  2796 tty1     Ss+  12:35   0:00 /usr/sbin/agetty --noreset --noclear --issue-file=/etc/issue:/etc/issue.d:/run/issue.d:/usr/lib/issue.d - linux
+root         303  0.0  0.2 123468 32736 ?        Ssl  12:35   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+syslog       306  0.0  0.0 220548  6052 ?        Ssl  12:35   0:00 /usr/sbin/rsyslogd -n -iNONE
+_chrony      310  0.0  0.0  20424  6424 ?        S    12:35   0:00 /usr/sbin/chronyd -n -F 1 -x
+root         341  0.0  0.0   3188  1108 ?        Ss   12:35   0:00 /init
+root         342  0.0  0.0   3204  1244 ?        S    12:35   0:00 /init
+bellodio     343  0.0  0.0   8016  6736 pts/0    Ss   12:35   0:00 -bash
+root         344  0.0  0.0   8644  5652 ?        Ss   12:35   0:00 login -- bellodio
+_chrony      352  0.0  0.0  12096  2400 ?        S    12:35   0:00 /usr/sbin/chronyd -n -F 1 -x
+bellodio     593  0.0  0.0  22368 13596 ?        Ss   12:35   0:00 /usr/lib/systemd/systemd --user
+bellodio     595  0.0  0.0  22916  4080 ?        S    12:35   0:00 (sd-pam)
+bellodio     643  0.0  0.0   6136  5476 pts/1    Ss+  12:35   0:00 -bash
+bellodio    1640  0.0  0.0   7212  4424 pts/0    R+   14:02   0:00 ps aux

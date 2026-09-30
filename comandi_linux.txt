@@ -1,0 +1,14 @@
+Plaintext
+=== COMANDI BASE LINUX ===
+pwd               -> Mostra la cartella corrente
+ls -la            -> Elenca tutti i file con permessi e dettagli
+chmod +x <file>   -> Rende un file eseguibile
+
+=== PROCESSI E PIPE ===
+ps aux            -> Lista tutti i processi attivi
+grep <parola>     -> Filtra il testo cercando una parola specifica
+wc -l             -> Conta il numero di righe
+ps aux | grep X   -> Cerca il processo X in esecuzione
+
+=== LOG ===
+tail -n 10 <file> -> Mostra le ultime 10 righe di un file

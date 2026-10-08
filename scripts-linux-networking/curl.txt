@@ -1,0 +1,34 @@
+Quando usi un browser (come Chrome), lui scarica il codice di un sito e lo "disegna" con grafica, colori e bottoni. Quando usi curl da terminale, leggi direttamente la risposta grezza inviata dal server.
+
+In ambito DevOps e Cloud, curl ti serve principalmente per 3 cose:
+
+1. Verificare l'Health Check (Stato di salute di un servizio)
+Quando lanci un container o un server, prima di verificare se la grafica funziona, devi sapere se il servizio è vivo e risponde.
+
+Se esegui:
+
+Bash
+curl -I https://github.com
+L'opzione -I (oppure --head) nasconde tutto il codice della pagina e ti mostra solo gli Header di risposta HTTP. Cerchi subito la prima riga:
+
+HTTP/2 200 OK: Il server è operativo e sta rispondendo correttamente.
+
+HTTP/1.1 404 Not Found: La risorsa non esiste.
+
+HTTP/1.1 500 Internal Server Error: L'applicazione è crashata.
+
+2. Testare le API (Senza interfaccia grafica)
+Gran parte dei microservizi e dei container Cloud non hanno un'interfaccia grafica: comunicano tra loro scambiandosi dati in formato JSON.
+
+curl ti permette di interrogare un'API REST direttamente da terminale:
+
+Bash
+curl https://api.github.com/users/octocat
+Ti restituirà il dato puro (JSON) con le informazioni dell'utente, esattamente come lo leggerebbe un'altra applicazione.
+
+3. Inviare dati a un server (POST / PUT)
+I browser inviano dati principalmente tramite form. Con curl puoi simulare l'invio di dati, file o credenziali verso un server per testarne il comportamento:
+
+Bash
+curl -X POST https://httpbin.org/post -d "param1=valore1&param2=valore2"
+

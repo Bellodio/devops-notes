@@ -1,0 +1,10 @@
+services:
+  mio-webserver:
+    image: nginx:alpine
+    container_name: webserver-compose
+    command: [nginx-debug, '-g', 'daemon off; charset utf-8;']
+    ports:
+      - "8086:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    restart: always

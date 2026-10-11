@@ -8,3 +8,12 @@ services:
     volumes:
       - ./index.html:/usr/share/nginx/html/index.html:ro
     restart: always
+    
+  mio-database:
+    image: postgres:15-alpine
+    container_name: database-compose
+    environment:
+      POSTGRES_USER: mio_utente
+      POSTGRES_PASSWORD: mia_password
+      POSTGRES_DB: mio_database
+    restart: always

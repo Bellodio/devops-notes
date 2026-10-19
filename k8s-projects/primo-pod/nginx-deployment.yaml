@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mio-webserver-deployment
+spec:
+  replicas: 2 # Vogliamo 2 copie (pod) sempre attive in parallelo
+  selector:
+    matchLabels:
+      app: mio-webserver
+  template:
+    metadata:
+      labels:
+        app: mio-webserver
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mio-webserver-service
+spec:
+  type: NodePort # Espone il servizio all'esterno del cluster di test
+  selector:
+    app: mio-webserver
+  ports:
+    - port: 80
+      targetPort: 80

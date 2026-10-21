@@ -2,3 +2,6 @@
 *.tmp
 processi.txt
 lezione1.txt
+.terraform/
+*.tfstate
+*.tfstate.*

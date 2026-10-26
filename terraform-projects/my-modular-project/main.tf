@@ -33,3 +33,4 @@ output "backend_access_url" {
 output "frontend_access_url" {
   value = module.frontend.url
 }
+# Test del ruleset GitHub Actions

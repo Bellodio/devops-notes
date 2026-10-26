@@ -7,8 +7,8 @@ on:
     branches: [ main, master ]
 
 jobs:
-  validate:
-    name: 'Validate Terraform Code'
+  validate-and-plan:
+    name: 'Terraform Validate & Plan'
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +22,9 @@ jobs:
       run: terraform fmt -check -recursive
 
     - name: Terraform Init
-      run: terraform init -backend=false
+      run: terraform init
       working-directory: ./terraform-projects/my-modular-project
 
-    - name: Terraform Validate
-      run: terraform validate
+    - name: Terraform Plan
+      run: terraform plan
       working-directory: ./terraform-projects/my-modular-project

@@ -7,17 +7,14 @@ terraform {
   }
 }
 
-resource "docker_image" "nginx" {
-  name         = "nginx:latest"
-  keep_locally = false
-}
-
 resource "docker_container" "this" {
-  image = docker_image.nginx.image_id
+  image = "nginx:latest"
   name  = var.container_name
 
   ports {
-    internal = 80
-    external = var.external_port
+     internal = 80
+     external = var.external_port
   }
+
+  env = var.backend_url != "" ? ["BACKEND_SERVICE=${var.backend_url}"] : []
 }

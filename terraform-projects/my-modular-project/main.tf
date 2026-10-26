@@ -9,27 +9,27 @@ terraform {
 
 provider "docker" {}
 
-# Istanziamo il primo container chiamando il modulo locale
-module "web_app_one" {
+# Modulo Backend
+module "backend" {
   source = "../modules/docker_container"
 
-  container_name = "app-produzione"
+  container_name = "app-backend"
   external_port  = 9000
 }
 
-# Istanziamo il secondo container riutilizzando lo stesso identico modulo!
-module "web_app_two" {
+# Modulo Frontend (collegato al backend)
+module "frontend" {
   source = "../modules/docker_container"
 
-  container_name = "app-staging"
+  container_name = "app-frontend"
   external_port  = 9001
+  backend_url    = module.backend.url
 }
 
-# Stampiamo gli URL sfruttando gli output restituiti dai moduli
-output "production_url" {
-  value = module.web_app_one.url
+output "backend_access_url" {
+  value = module.backend.url
 }
 
-output "staging_url" {
-  value = module.web_app_two.url
+output "frontend_access_url" {
+  value = module.frontend.url
 }

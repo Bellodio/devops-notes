@@ -1,0 +1,30 @@
+name: Terraform CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: 'Validate Terraform Code'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    - name: Terraform Format Check
+      run: terraform fmt -check -recursive
+
+    - name: Terraform Init
+      run: terraform init -backend=false
+      working-directory: ./terraform-projects/my-modular-project
+
+    - name: Terraform Validate
+      run: terraform validate
+      working-directory: ./terraform-projects/my-modular-project

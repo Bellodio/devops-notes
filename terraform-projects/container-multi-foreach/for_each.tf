@@ -30,7 +30,7 @@ resource "docker_container" "services" {
   for_each = var.services
 
   image = docker_image.nginx.image_id
-  name  = each.key        # Nome del container: "frontend", "api", "cache"
+  name  = each.key # Nome del container: "frontend", "api", "cache"
 
   ports {
     internal = 80

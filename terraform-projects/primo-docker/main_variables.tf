@@ -16,10 +16,10 @@ resource "docker_image" "nginx" {
 
 resource "docker_container" "webserver" {
   image = docker_image.nginx.image_id
-  
+
   # variabili richiamate con var.nome_variabile
-  name  = var.container_name
-  
+  name = var.container_name
+
   ports {
     internal = 80
     external = var.external_port
